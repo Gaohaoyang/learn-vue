@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 1</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <h1>双向绑定</h1>
+        <h2>{{message}}</h2>
+        <input type="text" v-model="message">
+
+        <h1>渲染列表</h1>
+        <ul>
+            <li v-for="todo in todos">
+                {{todo.name}} and date is {{todo.date}}
+            </li>
+        </ul>
+
+        <h1>处理用户输入</h1>
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">Reverse message</button>
+
+        <h1>综合 ToDo 练习</h1>
+        <input type="text" v-model="newTodo" v-on:keyup.enter="addNewTodo">
+        <ul>
+            <li v-for="todo in todos">
+                <span>{{todo.name}}</span>
+                <button v-on:click="removeTodo($index)">X</button>
+            </li>
+        </ul>
+        <hr>
+        <pre>{{ $data | json }}</pre>
+    </div>
+
+    <script src="vue.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                newTodo: '',
+                todos: [{
+                    name: 'JavaScript',
+                    date: '2015'
+                }, {
+                    name: 'Vue.js',
+                    date: '2016'
+                }, {
+                    name: 'something awesome!',
+                    date: '2016'
+                }]
+            },
+            methods: {
+                reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('')
+                },
+                addNewTodo: function() {
+                    var name = this.newTodo.trim()
+                    if (name) {
+                        this.todos.unshift({
+                            name: name,
+                            date: '2016'
+                        })
+                        this.newTodo = ''
+                    }
+                },
+                removeTodo: function(index) {
+                    console.log(index)
+                    this.todos.splice(index,1)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
