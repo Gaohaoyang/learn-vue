@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>计算属性</title>
+</head>
+
+<body>
+    <div id="example">
+        <p>
+            a = {{a}}, b = {{b}}
+        </p>
+        <p>
+            名：
+            <input type="text" v-model="firstName"> 姓：
+            <input type="text" v-model="lastName">
+        </p>
+        <p>
+            全名：{{fullName}}
+        </p>
+    </div>
+
+
+    <script src="../vue.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                a: 1,
+                firstName: 'Haoyang',
+                lastName: 'Gao'
+            },
+            computed: {
+                // 一个计算属性的 getter
+                b: function() {
+                    return this.a + 1 // `this` 指向 vm 实例
+                },
+                fullName: function() {
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
