@@ -28,20 +28,49 @@
         </p>
 
         <h3>过滤器</h3>
+        <hr>
+
+        <h2>指令</h2>
+        <p v-if="isFree">Free</p>
+
+        <h3>参数</h3>
+        <p>
+            <a v-bind:href="url">{{url}}</a><br>
+            <a v-on:click="doSomething" href={{url}}>{{url}}</a>
+        </p>
+        <h3>修饰符</h3>
+
+        <hr>
+        <h2>缩写</h2>
+        <h3>v-bind 缩写</h3>
+        <a v-bind:href="url">{{url}}</a><br>
+        <a :href="url">{{url}}</a>
+
+        <h3>v-on 缩写</h3>
+        <a v-on:click="doSomething" href={{url}}>{{url}}</a><br>
+        <a @click="doSomething" href={{url}}>{{url}}</a>
 
     </div>
 
 
     <script src="../vue.js" charset="utf-8"></script>
     <script type="text/javascript">
+        /* jshint asi:true */
         var vm1 = new Vue({
             el: '#example',
             data: {
                 book: '<strong>JavaScript</strong>',
-                number: 8
+                number: 8,
+                isFree: true,
+                url:'http://gaohaoyang.github.io'
+            },
+            methods:{
+                doSomething:function (e) {
+                    e.preventDefault()
+                    alert('hello!')
+                }
             }
         })
-
     </script>
 </body>
 
