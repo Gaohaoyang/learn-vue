@@ -4,23 +4,33 @@
 <head>
     <meta charset="utf-8">
     <title>Class 与 Style 绑定</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    <h1>Class 与 Style 绑定</h1>
-    <h2>绑定 HTML Class</h2>
-    <h3>对象语法</h3>
-    <h3>数组语法</h3>
-    <hr>
-    <h2>绑定内联样式</h2>
-    <h3>对象语法</h3>
-    <h3>数组语法</h3>
-    <h3>自动添加前缀</h3>
+    <div id="app">
+        <h1>Class 与 Style 绑定</h1>
+        <h2>绑定 HTML Class</h2>
+        <h3>对象语法</h3>
+        <div v-bind:class="{'p1':isP1,'p2':isP2}">
+            <p>这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字</p>
+            <p>v-bind:class="{'p1':isP1,'p2':isP2}"</p>
+        </div>
+        <div v-bind:class="classObject">
+            <p>v-bind:class="classObject"</p>
+        </div>
+        <h3>数组语法</h3>
+        <div v-bind:class="[classA,classB]">
+            <p>v-bind:class="[classA,classB]"</p>
+        </div>
+        <hr>
+        <h2>绑定内联样式</h2>
+        <h3>对象语法</h3>
+        <h3>数组语法</h3>
+        <h3>自动添加前缀</h3>
+    </div>
     <script src="../vue.js" charset="utf-8"></script>
-    <script type="text/javascript">
-        /* jshint asi:true */
-        
-    </script>
+    <script src="main.js" charset="utf-8"></script>
 </body>
 
 </html>
